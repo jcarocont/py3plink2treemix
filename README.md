@@ -11,7 +11,7 @@ Python 3 port and refactor of the original `plink2treemix.py` (Python 2).
 
 ## Workflow: VCF to TreeMix
 
-1. **Prepare a population file** (`clusters.txt`) with three whitespace-separated columns (spaces or tabs): `FID IID POPULATION`.
+1. **Prepare a population file** (`clusters.txt`) with three whitespace-separated columns (spaces or tabs): `FID` `IID` `POPULATION`.
 
 ```
    0 sample_A 1
@@ -23,8 +23,7 @@ Python 3 port and refactor of the original `plink2treemix.py` (Python 2).
 
 ```bash
    plink --vcf data.vcf --allow-extra-chr --const-fid 0 \
-         --set-missing-var-ids @:# \
-         --within clusters.txt --freq counts gz --out freq1
+         --within clusters.txt --freq gz --out countfreq
 ```
 
    - `--const-fid 0` makes each sample `FID=0`, `IID=<full sample name>`. If your `clusters.txt` has `FID = IID`, use `--double-id` instead.
